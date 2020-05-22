@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phploc>
-  <directories>4</directories>
-  <files>19</files>
-  <loc>3238</loc>
-  <lloc>460</lloc>
+  <directories>5</directories>
+  <files>20</files>
+  <loc>3260</loc>
+  <lloc>463</lloc>
   <llocClasses>314</llocClasses>
-  <llocFunctions>0</llocFunctions>
-  <llocGlobal>146</llocGlobal>
-  <cloc>806</cloc>
+  <llocFunctions>2</llocFunctions>
+  <llocGlobal>147</llocGlobal>
+  <cloc>809</cloc>
   <ccn>268</ccn>
   <ccnMethods>232</ccnMethods>
   <interfaces>0</interfaces>
@@ -26,13 +26,13 @@
   <constants>0</constants>
   <classConstants>0</classConstants>
   <globalConstants>0</globalConstants>
-  <testClasses>0</testClasses>
-  <testMethods>0</testMethods>
-  <ccnByLloc>0.58260869565217</ccnByLloc>
+  <testClasses>1</testClasses>
+  <testMethods>2</testMethods>
+  <ccnByLloc>0.57883369330454</ccnByLloc>
   <llocByNof>0</llocByNof>
-  <methodCalls>27</methodCalls>
+  <methodCalls>29</methodCalls>
   <staticMethodCalls>5</staticMethodCalls>
-  <instanceMethodCalls>22</instanceMethodCalls>
+  <instanceMethodCalls>24</instanceMethodCalls>
   <attributeAccesses>46</attributeAccesses>
   <staticAttributeAccesses>25</staticAttributeAccesses>
   <instanceAttributeAccesses>21</instanceAttributeAccesses>
@@ -40,11 +40,11 @@
   <globalVariableAccesses>0</globalVariableAccesses>
   <superGlobalVariableAccesses>22</superGlobalVariableAccesses>
   <globalConstantAccesses>0</globalConstantAccesses>
-  <classCcnMin>233</classCcnMin>
-  <classCcnAvg>233</classCcnAvg>
+  <classCcnMin>1</classCcnMin>
+  <classCcnAvg>117</classCcnAvg>
   <classCcnMax>233</classCcnMax>
-  <classLlocMin>314</classLlocMin>
-  <classLlocAvg>314</classLlocAvg>
+  <classLlocMin>0</classLlocMin>
+  <classLlocAvg>157</classLlocAvg>
   <classLlocMax>314</classLlocMax>
   <methodCcnMin>1</methodCcnMin>
   <methodCcnAvg>3.974358974359</methodCcnAvg>
@@ -53,5 +53,5 @@
   <methodLlocAvg>3.8717948717949</methodLlocAvg>
   <methodLlocMax>20</methodLlocMax>
   <namespaces>0</namespaces>
-  <ncloc>2432</ncloc>
+  <ncloc>2451</ncloc>
 </phploc>

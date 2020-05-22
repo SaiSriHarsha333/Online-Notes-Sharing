@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Online_Notes_Sharing" default="full-build">
- <!-- By default, we assume all tools to be on the $PATH -->
+<project name="DevOps_MiniProj" default="full-build">
+ <!-- By default, we assume all tools to be on the $PATH
  <property name="pdepend" value="pdepend"/>
  <property name="phpcpd"  value="phpcpd"/>
  <property name="phpcs"   value="phpcs"/>
  <property name="phpdox"  value="phpdox"/>
  <property name="phploc"  value="phploc"/>
  <property name="phpmd"   value="phpmd"/>
- <property name="phpunit" value="phpunit"/>
+ <property name="phpunit" value="phpunit"/>-->
 
  <!-- Use this when the tools are located as PHARs in ${basedir}/build/tools
  <property name="pdepend" value="${basedir}/build/tools/pdepend.phar"/>
@@ -18,17 +18,17 @@
  <property name="phpmd"   value="${basedir}/build/tools/phpmd.phar"/>
  <property name="phpunit" value="${basedir}/build/tools/phpunit.phar"/> -->
 
- <!-- Use this when the tools are managed by Composer in ${basedir}/vendor/bin
+ <!-- Use this when the tools are managed by Composer in ${basedir}/vendor/bin -->
  <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
  <property name="phpcpd"  value="${basedir}/vendor/bin/phpcpd"/>
  <property name="phpcs"   value="${basedir}/vendor/bin/phpcs"/>
  <property name="phpdox"  value="${basedir}/vendor/bin/phpdox"/>
  <property name="phploc"  value="${basedir}/vendor/bin/phploc"/>
  <property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
- <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/> -->
+ <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
 
  <target name="full-build"
-         depends="prepare,static-analysis,phpunit,phpdox,-check-failure"
+         depends="prepare,composer,static-analysis,phpunit,phpdox"
          description="Performs static analysis, runs the tests, and generates project documentation"/>
 
  <target name="full-build-parallel"
@@ -80,6 +80,33 @@
   <mkdir dir="${basedir}/build/phpdox"/>
   <property name="prepare.done" value="true"/>
  </target>
+
+<target name="composer" depends="clean-composer,composer-install,composer-update" description="Install or update dependencies" />
+
+    <!--// Check to see it the vendor folder already exist, if so, then no reason to run //-->
+        <target name="composer.check">
+                <condition property="composer.lock.exist.in.gitignore">
+                            <resourcecontains resource="${basedir}/.gitignore" substring="composer.lock" />
+                                    </condition>
+                                        </target>
+
+                                            <target name="clean-composer" depends="composer.check" if="composer.lock.exist.in.gitignore" description="Cleanup composer artifacts">
+                                                    <delete file="${basedir}/composer.lock" />
+                                                        </target>
+
+                                                            <target name="composer-install" depends="composer.check" unless="composer.lock.exist.in.gitignore" description="Installing dependencies">
+                                                                    <echo>Installing dependencies</echo>
+                                                                            <exec executable="composer" failonerror="true">
+                                                                                        <arg value="install" />
+                                                                                                </exec>
+                                                                                                    </target>
+
+                                                                                                        <target name="composer-update" depends="composer.check" if="composer.lock.exist.in.gitignore" description="Updating dependencies">
+                                                                                                                <echo>Updating dependencies</echo>
+                                                                                                                        <exec executable="composer" failonerror="true">
+                                                                                                                                    <arg value="update" />
+                                                                                                                                            </exec>
+                                                                                                                                                </target>
 
  <target name="lint"
          unless="lint.done"
