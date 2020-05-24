@@ -1,9 +1,12 @@
+<?php
+@ob_start();
+session_start();
+?>
 <?php include 'includes/connection.php';?>
 <?php include 'includes/header.php';?>
 <?php include 'includes/navbar.php';?>
 
 <?php
-session_start();
 if (isset($_POST['login'])) {
   $username  = $_POST['user'];
   $password = $_POST['pass'];
