@@ -2,7 +2,7 @@
   "id": "b3f48fae-a48e-4db6-9b15-9c3dc8b27134",
   "version": "2.0",
   "name": "Test2",
-  "url": "http://localhost/Online-Notes-Sharing/src/",
+  "url": "http://127.0.1.1/",
   "tests": [{
     "id": "4bca7a78-a0c0-41e7-9106-c35929f87a54",
     "name": "UserTest",
@@ -10,7 +10,7 @@
       "id": "66f6db57-09eb-45a8-b75f-3fede99ea2f7",
       "comment": "",
       "command": "open",
-      "target": "http://localhost/Online-Notes-Sharing/src/",
+      "target": "http://127.0.1.1/",
       "targets": [],
       "value": ""
     }, {
@@ -487,6 +487,6 @@
     "timeout": 300,
     "tests": ["4bca7a78-a0c0-41e7-9106-c35929f87a54"]
   }],
-  "urls": ["http://localhost/Online-Notes-Sharing/src/"],
+  "urls": ["http://localhost/Online-Notes-Sharing/src/", "http://127.0.1.1/"],
   "plugins": []
 }

@@ -10,15 +10,6 @@ pipeline {
         sh 'ant'
       }
     }
-	//stage('Test') {
-      //steps {
-        //sh 'PATH=/home/sriharsha/Desktop/8th_sem/SPE/project:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
-
-        // sh 'PATH=/home/manideep/Desktop/Online-Notes-Sharing:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
-        // sh 'node -v'
-        // sh 'selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
-      //}
-    //}
     stage('Docker Build') {
       steps {
        sh 'docker-compose build'
@@ -32,7 +23,7 @@ pipeline {
  	     }
      }
    }
-   stage('Deploy- Rundeck') {
+   stage('Deploy - Rundeck') {
       agent any
       steps {
         script {
@@ -43,6 +34,15 @@ pipeline {
           """,
           jobId: "f9927e54-5d40-4e3a-a773-58b51c7a7e91"])
         }
+      }
+    }
+	stage('Test') {
+      steps {
+        sh 'PATH=/home/sriharsha/Desktop/8th_sem/SPE/project:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
+
+        // sh 'PATH=/home/manideep/Desktop/Online-Notes-Sharing:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
+        // sh 'node -v'
+        // sh 'selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
       }
     }
   }
