@@ -28,7 +28,7 @@ pipeline {
        steps{
      	  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
      	   sh 'docker push saisriharsha333/php_img'
-         sh 'docker push saisriharsha333/mysql-server-800'
+         sh 'docker push saisriharsha333/mysql'
  	     }
      }
    }
