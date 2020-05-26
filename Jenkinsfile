@@ -10,23 +10,40 @@ pipeline {
         sh 'ant'
       }
     }
-	stage('Test') {
-      steps {
-        sh 'PATH=/home/sriharsha/Desktop/8th_sem/SPE/project:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
+	//stage('Test') {
+      //steps {
+        //sh 'PATH=/home/sriharsha/Desktop/8th_sem/SPE/project:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
 
         // sh 'PATH=/home/manideep/Desktop/Online-Notes-Sharing:$PATH selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
         // sh 'node -v'
         // sh 'selenium-side-runner Test1.side Test2.side -c "browserName=chrome goog:chromeOptions.args=[headless]" --output-directory=results --output-format=junit'
+      //}
+    //}
+    stage('Docker Build') {
+      steps {
+       sh 'docker-compose build'
+       }
+     }
+     stage('Docker Push'){
+       steps{
+     	  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
+     	   sh 'docker push saisriharsha333/php_img'
+         sh 'docker push saisriharsha333/mysql-server-800'
+ 	     }
+     }
+   }
+   stage('Deploy- Rundeck') {
+      agent any
+      steps {
+        script {
+          step([$class: "RundeckNotifier",
+          rundeckInstance: "Rundeck",
+          options: """
+            BUILD_VERSION=$BUILD_NUMBER
+          """,
+          jobId: "f9927e54-5d40-4e3a-a773-58b51c7a7e91"])
+        }
       }
-
-  //   pipeline {
-  //   agent { dockerfile true }
-  //   stages {
-  //       stage('Test') {
-  //           steps {
-  //               sh 'docker compose up'
-  //           }
-  //       }
     }
   }
 }
