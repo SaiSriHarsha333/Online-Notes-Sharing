@@ -29,9 +29,6 @@ pipeline {
         script {
           step([$class: "RundeckNotifier",
           rundeckInstance: "Rundeck",
-          options: """
-            BUILD_VERSION=$BUILD_NUMBER
-          """,
           jobId: "f9927e54-5d40-4e3a-a773-58b51c7a7e91"])
         }
       }
